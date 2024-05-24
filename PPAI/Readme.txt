@@ -24,4 +24,4 @@ No se utiliza la letra ñ ya que no esta bienn usarla a la hora de programar y a
 --------------------------------------------------
 AL EJECUTAR PARA MOSTRAR EL FUNCIONAMIENTO 💻
 --------------------------------------------------
-Aparecen en Sommelier en la fecha 12-05-2024 TODOS.
+Aparecen vinos de Sommelier SOLO en la fecha 12-05-2024.
