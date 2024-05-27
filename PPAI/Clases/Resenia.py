@@ -55,6 +55,6 @@ class Resenia:
         return False
 
     def sos_de_somellier(self,sommelier):
-        if self.es_premium:
+        if self.es_premium and sommelier=="Sommelier":
             return True
         return False

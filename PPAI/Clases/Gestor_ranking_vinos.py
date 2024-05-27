@@ -39,7 +39,7 @@ class Gestor_ranking_vinos:
         if not vinos_con_resenias_periodo:
             messagebox.showinfo("Información", "No reseñas creadas por Sommeliers.")
             return False, []
-        return vinos_con_resenias_periodo, vinos_filtrados
+        return vinos_con_resenias_periodo, vinos_filtrados,resenias_periodo
     
     def calcular_puntaje_de_sommelier_en_periodo(self,vinos_filtrados,fecha_desde,fecha_hasta,sommelier):
         puntajes_sommelier_promedio=[]

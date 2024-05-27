@@ -105,7 +105,7 @@ def carga_datos():
         imagen_etiqueta = "url_imagen"
         nombre_vino = nombres_vinos[i]
         nota_de_cata_bodega = "Este vino es el resultado de una cuidadosa selección de uvas maduras y una crianza en barricas de roble francés durante 12 meses. Presenta aromas intensos a frutos negros, notas de vainilla y toques de tabaco. En boca es redondo y equilibrado, con taninos suaves y un final largo y persistente."
-        precio_ars = 1200
+        precio_ars = random.randint(15200,54000)
 
         # Seleccionar un nombre de bodega aleatorio
         nombre_bodega = random.choice(nombres_bodegas)
@@ -131,9 +131,10 @@ def carga_datos():
         for _ in range(num_resenias):
             # Crear una reseña
             comentario_resenia = "¡Este vino es simplemente asombroso! Tiene una complejidad excepcional y un equilibrio perfecto entre fruta y roble."
-            es_premium_resenia = True
+            prem=[True,False]
+            es_premium_resenia = random.choice(prem)
             fecha_resenia = "12-05-2024"
-            puntaje_resenia = random.randint(1, 5)
+            puntaje_resenia = random.uniform(1, 5)
             resenia = Resenia(comentario_resenia, es_premium_resenia, fecha_resenia, puntaje_resenia, vino)
             resenias_vino.append(resenia)
 
@@ -147,5 +148,6 @@ def carga_datos():
 
 # Ejecutar la función y obtener los vinos generados
 vinos = carga_datos()
+
 
 

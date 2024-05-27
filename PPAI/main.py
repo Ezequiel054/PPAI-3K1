@@ -8,11 +8,27 @@ from Clases.Interfaz_pdf import *
 
 vinos=carga_datos()
 
+"""
+# Para mostrar que coinciden
+for vino in vinos:
+    region_vino = vino.get_bodega().get_region()  # Obtener la región de la bodega del vino
+    print("Nombre del vino:", vino.get_nombre())
+    print("Región:", region_vino.get_nombre())
+    print("Reseñas:")
+    for resenia in vino.get_resenia():
+        print("\tFecha de la reseña:", resenia.get_fecha_resenia())
+        print("\tEs premium:", resenia.get_es_premium())
+        print("\tPuntaje:", resenia.get_puntaje())
+        print("--------------------------")
+
+    print()
+    print()
+"""
+
 def main():
     gestor_ranking_vinos = Gestor_ranking_vinos()
     pantalla_ranking_vinos = Pantalla_ranking_vinos()
     
-
     opcion_generar_ranking_vinos=pantalla_ranking_vinos.opcion_generar_ranking_vinos()
     pantalla_ranking_vinos.habilitar_pantalla()
     gestor_ranking_vinos.opcion_generar_ranking_vinos()
@@ -46,7 +62,13 @@ def main():
                                         doc.build(datos_pdf)
                             else:
                                 print("No se realizo el curso alternativo mostrar por pantalla")
-                            
+
+"""
+# Para mostrar que coinciden
+print(vinos_con_resenia_en_periodo)
+print()
+print(puntajes)
+"""                          
 
 if __name__ == '__main__':
     main()

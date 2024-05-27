@@ -1,3 +1,2 @@
-Modificar Datos a mas reales
-Decorar Interfaz
 Comentar Codigo
+Arreglar Varietales - en la generacion de los datos hacer 80% %10 %10

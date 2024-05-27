@@ -14,18 +14,15 @@ class Pantalla_ranking_vinos():
 
     def opcion_generar_ranking_vinos(self):
         self.root = Tk()
-        #icono = PhotoImage(file="imgs/icono.PNG")
-        #self.root.iconphoto(True, icono)
         self.root.geometry("700x500")
         self.root.title("Bonvino")
         self.root.resizable(False, False)
 
-        # Color de fondo de la interfaz
         self.root.configure(bg="#800020")
 
         self.cerrar_presionado = False
 
-        mi_tipo_de_letra = font.Font(family="Arial", size=14, weight="bold")  # Aumento de tamaño de la letra
+        mi_tipo_de_letra = font.Font(family="Arial", size=14, weight="bold")
 
 
         """

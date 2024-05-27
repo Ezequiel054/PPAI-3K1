@@ -112,7 +112,8 @@ class Vino:
             return 0
 
         promedio_general = sum(puntajes_totales) / len(puntajes_totales)
-        return round(promedio_general, 2)
+        promedio_general = "{:.2f}".format(promedio_general)
+        return promedio_general
 
 
     def calcular_puntaje_de_sommelier_en_periodo(self,vino,fecha_desde,fecha_hasta,sommelier):
