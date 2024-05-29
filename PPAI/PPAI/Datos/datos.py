@@ -10,8 +10,8 @@ import random
 def generar_varietales():
     descripciones_varietales = [
         "Notas intensas de frutos rojos.",
-        "Notas cítricas y tropicales.",
-        "Notas intensas de frutas negras."
+        "combinación de notas cítricas y tropicales",
+        "Notas intensas de frutas negras"
     ]
 
     porcentajes_composicion_varietales = [
@@ -34,15 +34,14 @@ def carga_datos():
 
     # Región
     descripciones_regiones = [
-        "Es conocida por sus excelentes condiciones para el cultivo de la vid, con altitudes que favorecen la maduración lenta de las uvas y suelos de gran calidad.",
+        "La región de Valle de Uco es conocida por sus excelentes condiciones para el cultivo de la vid, con altitudes que favorecen la maduración lenta de las uvas y suelos de gran calidad.",
         "Es predominantemente semidesértica, y su viticultura depende del riego de los ríos San Juan y Jachal",
         "Se ha asociado recientemente con vinos de calidad para exportación, cuando hasta principios del siglo XXI, solo se cultivaban uvas de mesa y pasas por estos lares"
     ]
 
-    nombres_regiones = ["Mendoza", "San Juan", "La Rioja"]
     regiones = []
     for i in range(3):
-        region = Region_vitivinicola(descripciones_regiones[i], nombres_regiones[i], None)
+        region = Region_vitivinicola(descripciones_regiones[i], f"Región {i+1}", None)
         regiones.append(region)
 
     # Provincia
@@ -63,12 +62,12 @@ def carga_datos():
 
     # Bodega
     coordenadas_ubicacion_bodega = "40.7128° N, 74.0060° W"
-    descripcion_bodega = "Es un proyecto familiar ubicado en el corazón de la región vinícola, dedicado a la producción de vinos de alta calidad. Nuestros viñedos se extienden sobre suelos pedregosos que otorgan a nuestros vinos su carácter distintivo y expresivo."
+    descripcion_bodega = "Bodega Valle Escondido es un proyecto familiar ubicado en el corazón de la región vinícola, dedicado a la producción de vinos de alta calidad. Nuestros viñedos se extienden sobre suelos pedregosos que otorgan a nuestros vinos su carácter distintivo y expresivo."
     fecha_ultima_actualizacion_bodega = "12-05-2024"
     historia_bodega = "Fundada en 1998 por la familia González, Bodega Valle Escondido ha crecido desde sus humildes comienzos hasta convertirse en una reconocida bodega en la región. Nuestro enfoque en la calidad y la pasión por el vino nos ha llevado a ganar numerosos premios y reconocimientos a lo largo de los años."
     nombres_bodegas = [
         "Bodega Santa Rita",
-        "Bodega San Telmo",
+        "Viña Concha y Toro",
         "Bodegas Torres"
     ]
     periodo_actualizacion_bodega = "anual"
@@ -106,7 +105,7 @@ def carga_datos():
         imagen_etiqueta = "url_imagen"
         nombre_vino = nombres_vinos[i]
         nota_de_cata_bodega = "Este vino es el resultado de una cuidadosa selección de uvas maduras y una crianza en barricas de roble francés durante 12 meses. Presenta aromas intensos a frutos negros, notas de vainilla y toques de tabaco. En boca es redondo y equilibrado, con taninos suaves y un final largo y persistente."
-        precio_ars = random.randint(15200,54000)
+        precio_ars = 1200
 
         # Seleccionar un nombre de bodega aleatorio
         nombre_bodega = random.choice(nombres_bodegas)
@@ -132,10 +131,9 @@ def carga_datos():
         for _ in range(num_resenias):
             # Crear una reseña
             comentario_resenia = "¡Este vino es simplemente asombroso! Tiene una complejidad excepcional y un equilibrio perfecto entre fruta y roble."
-            prem=[True,False]
-            es_premium_resenia = random.choice(prem)
+            es_premium_resenia = True
             fecha_resenia = "12-05-2024"
-            puntaje_resenia = round(random.uniform(1, 5),2)
+            puntaje_resenia = random.randint(1, 5)
             resenia = Resenia(comentario_resenia, es_premium_resenia, fecha_resenia, puntaje_resenia, vino)
             resenias_vino.append(resenia)
 
@@ -149,6 +147,5 @@ def carga_datos():
 
 # Ejecutar la función y obtener los vinos generados
 vinos = carga_datos()
-
 
 
