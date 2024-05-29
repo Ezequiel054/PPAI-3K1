@@ -8,6 +8,7 @@ class Interfaz_excel:
     def __init__(self):
         pass
 
+    # Funcion que se encarga de tranformar los datos en Excel
     def exportar_excel(self,datos):
         wb = Workbook()
         ws = wb.active
@@ -28,7 +29,7 @@ class Interfaz_excel:
             max_score = max(row[5])
             sommelier_scores = row[5] + [None] * (max_sommelier_scores - len(row[5]))
             varietals = row[4] + [None] * (max_sommelier_scores - len(row[4]))
-            wine_data = [row[0], max_score, row[6], row[1], row[2], row[3][0], row[3][1]]
+            wine_data = [row[0], max_score, row[6], str(row[1]), row[2], row[3][0], row[3][1]]
             wine_data.extend(sommelier_scores)
             wine_data.extend(varietals)
             ws.append(wine_data)

@@ -61,5 +61,9 @@ class Bodega:
     def set_region(self, valor_region):
         self.region = valor_region
     
+    # Esta función obtiene y retorna el nombre de la región y el país asociado a la instancia actual.
+    # Llama al método `get_nombre` del atributo `region` para obtener el nombre de la región.
+    # Llama al método `obtener_pais` del atributo `region` para obtener el país asociado a la región.
+    # Retorna una tupla con el nombre de la región y el país.
     def obtener_region_y_pais(self):
         return self.region.get_nombre(), self.region.obtener_pais()

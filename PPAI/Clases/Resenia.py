@@ -46,6 +46,8 @@ class Resenia:
     def set_vino(self, valor_vino):
         self.vino = valor_vino
 
+    # Esta función verifica si una fecha de reseña está dentro de un período de tiempo especificado (fecha_desde y fecha_hasta).
+    # Convierte las fechas de formato de cadena a objetos datetime y devuelve True si la fecha de la reseña está dentro del rango, de lo contrario, devuelve False.
     def sos_de_periodo(self,fecha_desde,fecha_hasta,fecha_resenia):
         fecha_desde = datetime.strptime(fecha_desde, "%d-%m-%Y")
         fecha_hasta = datetime.strptime(fecha_hasta, "%d-%m-%Y")
@@ -54,6 +56,8 @@ class Resenia:
             return True
         return False
 
+    # Esta función verifica si una reseña es de un sommelier premium.
+    # Devuelve True si la reseña es premium y el sommelier especificado es "Sommelier", de lo contrario, devuelve False.
     def sos_de_somellier(self,sommelier):
         if self.es_premium and sommelier=="Sommelier":
             return True

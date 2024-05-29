@@ -10,8 +10,8 @@ import random
 def generar_varietales():
     descripciones_varietales = [
         "Notas intensas de frutos rojos.",
-        "combinación de notas cítricas y tropicales",
-        "Notas intensas de frutas negras"
+        "Notas cítricas y tropicales.",
+        "Notas intensas de frutas negras."
     ]
 
     porcentajes_composicion_varietales = [
@@ -39,9 +39,10 @@ def carga_datos():
         "Se ha asociado recientemente con vinos de calidad para exportación, cuando hasta principios del siglo XXI, solo se cultivaban uvas de mesa y pasas por estos lares"
     ]
 
+    nombres_regiones = ["Valle Dorado", "Montañas del Vino", "Llanuras Aromáticas"]
     regiones = []
     for i in range(3):
-        region = Region_vitivinicola(descripciones_regiones[i], f"Región {i+1}", None)
+        region = Region_vitivinicola(descripciones_regiones[i], nombres_regiones[i], None)
         regiones.append(region)
 
     # Provincia
@@ -67,7 +68,7 @@ def carga_datos():
     historia_bodega = "Fundada en 1998 por la familia González, Bodega Valle Escondido ha crecido desde sus humildes comienzos hasta convertirse en una reconocida bodega en la región. Nuestro enfoque en la calidad y la pasión por el vino nos ha llevado a ganar numerosos premios y reconocimientos a lo largo de los años."
     nombres_bodegas = [
         "Bodega Santa Rita",
-        "Viña Concha y Toro",
+        "Bodega San Telmo",
         "Bodegas Torres"
     ]
     periodo_actualizacion_bodega = "anual"
@@ -134,7 +135,7 @@ def carga_datos():
             prem=[True,False]
             es_premium_resenia = random.choice(prem)
             fecha_resenia = "12-05-2024"
-            puntaje_resenia = random.uniform(1, 5)
+            puntaje_resenia = round(random.uniform(1, 5),2)
             resenia = Resenia(comentario_resenia, es_premium_resenia, fecha_resenia, puntaje_resenia, vino)
             resenias_vino.append(resenia)
 

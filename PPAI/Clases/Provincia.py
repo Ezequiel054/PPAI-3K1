@@ -29,5 +29,7 @@ class Provincia:
     def set_pais(self, valor_pais):
         self.pais = valor_pais
 
+    # Esta función obtiene y retorna el nombre del país asociado a la instancia actual.
+    # Llama al método `get_nombre` del atributo `pais` y retorna su valor.
     def obtener_pais(self):
         return self.pais.get_nombre()

@@ -77,6 +77,9 @@ class Vino:
     def set_resenia(self, valor_resenia):
         self.resenia = valor_resenia
     
+    # Esta función obtiene las reseñas de un vino en un período de tiempo específico realizadas por un sommelier en particular.
+    # Si no hay reseñas que cumplan con los criterios, retorna False y una lista vacía.
+    # Si hay reseñas que cumplan con los criterios, retorna True y la lista de reseñas.
     def tenes_resenias_de_tipo_en_periodo(self,vino,fecha_desde,fecha_hasta,sommelier):
         resenias = []
         for resenia in vino.get_resenia():
@@ -88,15 +91,20 @@ class Vino:
         else:
             return True, resenias
     
+    # Esta función obtiene y retorna el nombre de la bodega asociada a la instancia actual.
     def buscar_info_bodega(self):
         return self.bodega.get_nombre()
     
+    # Esta función obtiene y retorna una lista de descripciones de los varietales de un vino.
     def buscar_varietal(self,vino):
         varietales=[]
         for varietal in vino.get_varietal():
             varietales.append(varietal.get_descripcion())
         return varietales
 
+    # Esta función calcula y retorna el puntaje promedio de una lista de puntajes.
+    # La lista de puntajes puede contener sublistas de puntajes.
+    # Si no hay puntajes, retorna 0. Si hay puntajes, retorna el promedio con dos decimales.
     def calcular_puntaje_promedio(self,puntajes):
         if not puntajes: 
             return 0
@@ -115,7 +123,7 @@ class Vino:
         promedio_general = "{:.2f}".format(promedio_general)
         return promedio_general
 
-
+    # Esta función obtiene y retorna una lista de puntajes de reseñas de un vino en un período de tiempo específico realizadas por un sommelier en particular.
     def calcular_puntaje_de_sommelier_en_periodo(self,vino,fecha_desde,fecha_hasta,sommelier):
         puntaje_resenias=[]
         for resenia in vino.get_resenia():

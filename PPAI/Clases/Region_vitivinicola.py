@@ -29,6 +29,9 @@ class Region_vitivinicola:
     def set_provincia(self, valor_provincia):
         self.provincia = valor_provincia
 
+    # Esta función obtiene y retorna el país asociado a la provincia de la instancia actual.
+    # Si la instancia tiene una provincia, llama al método `obtener_pais` de la provincia y retorna su valor.
+    # Si la provincia es None, la función no retorna ningún valor explícito
     def obtener_pais(self):
         if self.provincia is not None:
             return self.provincia.obtener_pais()

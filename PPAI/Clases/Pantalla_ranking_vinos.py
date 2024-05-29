@@ -11,7 +11,8 @@ class Pantalla_ranking_vinos():
     
     def __init__(self):
         pass
-
+    
+    # Esta función crea una ventana de interfaz gráfica con un botón para generar un reporte de ranking de vinos.
     def opcion_generar_ranking_vinos(self):
         self.root = Tk()
         self.root.geometry("700x500")
@@ -23,16 +24,6 @@ class Pantalla_ranking_vinos():
         self.cerrar_presionado = False
 
         mi_tipo_de_letra = font.Font(family="Arial", size=14, weight="bold")
-
-
-        """
-        estilo_boton = {
-            "bg": "white",       # Fondo blanco
-            "fg": "#800020",     # Texto color vino
-            "font": mi_tipo_de_letra,
-            "relief": "raised",  # Estilo de sombra
-        }
-        """
 
         self.boton = Button(self.root, text="Generar Reporte Ranking", font=mi_tipo_de_letra, command=self.root.quit)
         self.boton.grid(row=0, column=0, padx=10, pady=10, sticky="nsew")
@@ -51,6 +42,9 @@ class Pantalla_ranking_vinos():
     def habilitar_pantalla(self):
         pass
     
+    # Esta función crea una ventana de interfaz gráfica para seleccionar un rango de fechas "Desde" y "Hasta".
+    # Permite al usuario seleccionar las fechas, validar el periodo, y confirmar su selección.
+    # Retorna True si se presiona el botón de cerrar, o las fechas seleccionadas en formato "dd-mm-yyyy" si se confirma la selección
     def solicitar_sel_fecha_desde_y_hasta(self):
         self.root = Tk()
         self.root.geometry("700x500")
@@ -84,6 +78,9 @@ class Pantalla_ranking_vinos():
         else:
             return self.cal_desde.get_date().strftime("%d-%m-%Y"),self.cal_hasta.get_date().strftime("%d-%m-%Y")
 
+    # Esta función crea una ventana de interfaz gráfica para seleccionar un rango de fechas "Desde" y "Hasta".
+    # Permite al usuario seleccionar las fechas, validar el periodo, y confirmar su selección.
+    # Retorna True si se presiona el botón de cerrar, o las fechas seleccionadas en formato "dd-mm-yyyy" si se confirma la selección
     def tomar_sel_fecha_desde(self):
         mi_tipo_de_letra = font.Font(family="Arial", size=14, weight="bold")
 
@@ -93,6 +90,7 @@ class Pantalla_ranking_vinos():
         self.cal_desde.configure(state="readonly")
         self.cal_desde.bind("<<DateEntrySelected>>", lambda event: self.validar_periodo())
 
+    # Esta función crea y configura un selector de fecha "Hasta" en la ventana principal.
     def tomar_sel_fecha_hasta(self):
         mi_tipo_de_letra = font.Font(family="Arial", size=14, weight="bold")
 
@@ -102,6 +100,8 @@ class Pantalla_ranking_vinos():
         self.cal_hasta.configure(state="readonly")
         self.cal_hasta.bind("<<DateEntrySelected>>", lambda event: self.validar_periodo())
 
+    # Esta función valida que la fecha "Desde" no sea mayor o igual que la fecha "Hasta".
+    # Muestra un mensaje de error si la validación falla y cierra la ventana si las fechas son válidas.
     def validar_periodo(self):
         fecha_desde = self.cal_desde.get_date()
         fecha_hasta = self.cal_hasta.get_date()
@@ -112,7 +112,8 @@ class Pantalla_ranking_vinos():
 
         self.error_label.config(text="Fechas validas ...")
         self.root.quit()
-        
+    
+    # Esta función crea una ventana de interfaz gráfica para seleccionar el tipo de reseña.
     def solicitar_sel_tipo_resenia(self):
         self.root = Tk()
         self.root.geometry("700x500")
@@ -137,6 +138,7 @@ class Pantalla_ranking_vinos():
         else:
             return self.tipo_resenia.get()
 
+    # Esta función crea y configura un combobox para seleccionar el tipo de reseña en la ventana principal.
     def tomar_tipo_resenia(self):
         mi_tipo_de_letra = font.Font(family="Arial", size=14, weight="bold")
 
@@ -152,6 +154,7 @@ class Pantalla_ranking_vinos():
         self.combo_resenia.place(relx=0.5, rely=0.4, anchor='center')  # Posicionar en el centro de la ventana
         self.combo_resenia.configure(state="readonly")
 
+    # Esta función crea una ventana de interfaz gráfica para seleccionar el tipo de visualización.
     def solicitar_sel_tipo_visualizacion(self):
         self.root = Tk()
         self.root.geometry("700x500")
@@ -177,6 +180,7 @@ class Pantalla_ranking_vinos():
         else:
             return self.tipo_visualizacion.get()
 
+    # Esta función crea y configura un combobox para seleccionar el tipo de visualización en la ventana principal.
     def tomar_tipo_visualizacion(self):
         mi_tipo_de_letra = font.Font(family="Arial", size=14, weight="bold")
 
@@ -190,10 +194,12 @@ class Pantalla_ranking_vinos():
         self.combo_visualizacion.place(relx=0.5, rely=0.4, anchor='center')
         self.combo_visualizacion.configure(state="readonly")
 
+    # Funcion para tomar el cierre de la ventana
     def cerrar_press(self):
         self.cerrar_presionado = True
         self.root.quit()
 
+    # Esta función crea una ventana para solicitar la confirmación del usuario antes de generar el reporte de ranking.
     def solicitar_confirmacion_gen_reporte(self):
         self.root = Tk()
         self.root.geometry("700x500")
@@ -227,6 +233,7 @@ class Pantalla_ranking_vinos():
         self.confirmado = False
         self.root.quit()
 
+    # Esta función configura los botones de confirmación y cancelación en la ventana de confirmación para generar el reporte de ranking.
     def tomar_confirmacion_gen_reporte(self):
         mi_tipo_de_letra = font.Font(family="Arial", size=14, weight="bold")
 
@@ -270,6 +277,7 @@ class Pantalla_ranking_vinos():
             return True
         else:
             return False
+
 # funcion propia del lenguaje para centrar las ventanas       
 def center_window(window):
     window.update_idletasks()

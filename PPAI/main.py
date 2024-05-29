@@ -5,10 +5,10 @@ from Clases.Interfaz_excel import *
 from Datos.datos import *
 from Clases.Interfaz_pdf import *
 
-
+# Llamada a la funcion que carga los datos de 20 vinos de ejemplo
 vinos=carga_datos()
 
-"""
+
 # Para mostrar que coinciden
 for vino in vinos:
     region_vino = vino.get_bodega().get_region()  # Obtener la región de la bodega del vino
@@ -23,8 +23,9 @@ for vino in vinos:
 
     print()
     print()
-"""
 
+
+# funcion que contiene toda la logica
 def main():
     gestor_ranking_vinos = Gestor_ranking_vinos()
     pantalla_ranking_vinos = Pantalla_ranking_vinos()
@@ -63,12 +64,12 @@ def main():
                             else:
                                 print("No se realizo el curso alternativo mostrar por pantalla")
 
-"""
-# Para mostrar que coinciden
-print(vinos_con_resenia_en_periodo)
-print()
-print(puntajes)
-"""                          
+
+    # Para mostrar que coinciden
+    print(vinos_con_resenia_en_periodo[0])
+    print()
+    print(puntajes)
+                         
 
 if __name__ == '__main__':
     main()

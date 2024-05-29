@@ -12,6 +12,7 @@ class Interfaz_pdf:
     def __init__(self):
         pass
 
+    # Funcion que se encarga de tranformar los datos en PDF
     def exportar_pdf(self,datos):
         pdf_filename = "vinos.pdf"
         doc = SimpleDocTemplate(pdf_filename, pagesize=landscape(letter))
