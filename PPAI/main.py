@@ -69,10 +69,12 @@ def main():
                                     
     gestor_ranking_vinos.fin_cu()
 
+    """
     # Para mostrar que coinciden
     print(vinos_con_resenia_en_periodo[0])
     print()
     print(puntajes)
+    """
                          
 
 if __name__ == '__main__':
