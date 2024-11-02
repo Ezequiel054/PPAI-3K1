@@ -1,3 +1,0 @@
-Modificar Datos a mas reales
-Decorar Interfaz
-Comentar Codigo

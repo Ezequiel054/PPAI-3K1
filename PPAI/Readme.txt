@@ -14,6 +14,10 @@ Casos de uso alternativos:
 -Visualización del reporte en PDF.
 -Visualización del reporte en Pantalla
 
+--------------------------------------------------
+Patrones Aplicados:
+--------------------------------------------------
+
 
 --------------------------------------------------
 ⚠️ IMPORTANTE ⚠️

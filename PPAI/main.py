@@ -1,9 +1,9 @@
 from tkinter import *
-from Clases.Pantalla_ranking_vinos import *
-from Clases.Gestor_ranking_vinos import *  
-from Clases.Interfaz_excel import *
+from Clases.Boundary.Pantalla_ranking_vinos import *
+from Clases.Control.Gestor_ranking_vinos import *  
+from Clases.Boundary.Interfaz_excel import *
 from Datos.datos import *
-from Clases.Interfaz_pdf import *
+from Clases.Boundary.Interfaz_pdf import *
 
 # Llamada a la funcion que carga los datos de 20 vinos de ejemplo
 vinos=carga_datos()

@@ -1,10 +1,10 @@
-from Clases.Vino import *
-from Clases.Varietal import *
-from Clases.Resenia import *
-from Clases.Bodega import *
-from Clases.Region_vitivinicola import *
-from Clases.Provincia import *
-from Clases.Pais import *
+from Clases.Entity.Vino import *
+from Clases.Entity.Varietal import *
+from Clases.Entity.Resenia import *
+from Clases.Entity.Bodega import *
+from Clases.Entity.Region_vitivinicola import *
+from Clases.Entity.Provincia import *
+from Clases.Entity.Pais import *
 import random
 
 def generar_varietales():
