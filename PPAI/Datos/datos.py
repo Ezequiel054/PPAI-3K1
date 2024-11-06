@@ -6,6 +6,9 @@ from Clases.Entity.Region_vitivinicola import *
 from Clases.Entity.Provincia import *
 from Clases.Entity.Pais import *
 import random
+from Datos.ConexionDb import ConexionDB
+import sqlite3
+
 
 def generar_varietales():
     descripciones_varietales = [
@@ -124,7 +127,7 @@ def carga_datos():
         varietales_vino = random.sample(varietales, num_varietales)
 
         # Crear el vino
-        vino = Vino(añada, fecha_actualizacion_vino, imagen_etiqueta, nombre_vino, nota_de_cata_bodega, precio_ars, bodega, varietales_vino, None)
+        vino = Vino(añada, fecha_actualizacion_vino, imagen_etiqueta, nombre_vino, nota_de_cata_bodega, precio_ars, bodega, varietales_vino,[])
 
         # Generar un número aleatorio de reseñas para este vino (de 1 a 3)
         num_resenias = random.randint(1, 3)
@@ -140,15 +143,11 @@ def carga_datos():
             resenias_vino.append(resenia)
 
         # Asignar las reseñas al vino
-        vino.resenias = resenias_vino
+        vino.resenia = resenias_vino
 
         # Agregar el vino a la lista de vinos generados
         vinos_generados.append(vino)
 
+
     return vinos_generados
-
-# Ejecutar la función y obtener los vinos generados
-vinos = carga_datos()
-
-
 

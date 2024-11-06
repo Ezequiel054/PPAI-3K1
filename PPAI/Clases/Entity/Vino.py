@@ -78,7 +78,7 @@ class Vino(IAgregado):
         self.varietal = valor_varietal
 
     def get_resenia(self):
-        return self.resenias if self.resenias is not None else []
+        return self.resenia if self.resenia is not None else []
     
     def set_resenia(self, valor_resenia):
         self.resenia = valor_resenia
@@ -86,6 +86,10 @@ class Vino(IAgregado):
     # Esta función obtiene las reseñas de un vino en un período de tiempo específico realizadas por un sommelier en particular.
     # Si no hay reseñas que cumplan con los criterios, retorna False y una lista vacía.
     # Si hay reseñas que cumplan con los criterios, retorna True y la lista de reseñas.
+    ############################
+    ######## ITERATOR 1 ########      
+    ############################
+    # antes
     """
     def tenes_resenias_de_tipo_en_periodo(self,vino,fecha_desde,fecha_hasta,sommelier):
         resenias = []
@@ -98,17 +102,18 @@ class Vino(IAgregado):
         else:
             return True, resenias
     """
+    # despues
     def tenes_resenias_de_tipo_en_periodo(self, vino, fecha_desde, fecha_hasta, sommelier):
-        resenias = vino.get_resenia()  # Obtener todas las reseñas del vino
-        iterador_resenia = self.crearIterador(resenias)  # Crear el iterador con filtros
+        resenias = vino.get_resenia()  # Obtenemos todas las reseñas del vino
+        iterador_resenia = self.crearIterador(resenias)  # Creamos el iterador con filtros
         iterador_resenia.set_filtros({
             "fecha_desde": fecha_desde,
             "fecha_hasta": fecha_hasta,
             "sommelier": sommelier
         })
-        iterador_resenia.primero()  # Iniciar desde la primera reseña
+        iterador_resenia.primero()  # Iniciamos desde la primera reseña
         
-        resenias_filtradas = []  # Lista para almacenar las reseñas que cumplen con los filtros
+        resenias_filtradas = []  
         
         while not iterador_resenia.haTerminado():
             if iterador_resenia.cumpleFiltro():
@@ -150,6 +155,10 @@ class Vino(IAgregado):
         return promedio_general
 
     # Esta función obtiene y retorna una lista de puntajes de reseñas de un vino en un período de tiempo específico realizadas por un sommelier en particular.
+    ############################
+    ######## ITERATOR 2 ########      
+    ############################
+    # antes
     """
     def calcular_puntaje_de_sommelier_en_periodo(self,vino,fecha_desde,fecha_hasta,sommelier):
         puntaje_resenias=[]
@@ -159,13 +168,14 @@ class Vino(IAgregado):
                     puntaje_resenias.append(resenia.get_puntaje())
         return puntaje_resenias
     """
+    # ahora
     def calcular_puntaje_de_sommelier_en_periodo(self, vino, fecha_desde, fecha_hasta, sommelier):
         puntaje_resenias = []
 
-        # Crear el iterador para las reseñas del vino
+        # Creamos el iterador para las reseñas del vino
         iterador_resenias = IteradorResenias(vino.get_resenia(),filtros=[])
         
-        # Establecer los filtros en el iterador
+        # Establecemos los filtros en el iterador
         iterador_resenias.set_filtros({
             "fecha_desde": fecha_desde,
             "fecha_hasta": fecha_hasta,
@@ -176,9 +186,9 @@ class Vino(IAgregado):
 
         while not iterador_resenias.haTerminado():
             if iterador_resenias.cumpleFiltro():
-                resenia = iterador_resenias.actual()  # Obtener la reseña que cumple con los filtros
-                puntaje_resenias.append(resenia.get_puntaje())  # Agregar el puntaje de la reseña
-            iterador_resenias.siguiente()  # Avanzar a la siguiente reseña
+                resenia = iterador_resenias.actual()  # Obtener la reseña que cumple con los filtros - SosDePEriodo() y SosDeSommelie() establecidos en iteradorResenias
+                puntaje_resenias.append(resenia.get_puntaje())
+            iterador_resenias.siguiente()  # Avanzamos a la siguiente reseña
 
         return puntaje_resenias
 
@@ -187,8 +197,8 @@ class Vino(IAgregado):
         if not elementos:
             raise ValueError("La lista de elementos no puede estar vacía.")
 
-        # Verificar el tipo de elemento para decidir qué iterador crear
+        # Verificamos el tipo de elemento para decidir qué iterador crear
         if isinstance(elementos[0], Resenia):
-            return IteradorResenias(elementos, filtros=[])  # Retorna un iterador de resenia con filtros vacíos
+            return IteradorResenias(elementos, filtros=[])  # Retornamos un iterador de resenia con filtros vacíos
         else:
             raise ValueError("Tipo de elemento no soportado.")

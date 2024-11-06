@@ -18,6 +18,7 @@ Casos de uso alternativos:
 Patrones Aplicados:
 --------------------------------------------------
 - Iterator
+- Singleton (BDA)
 
 --------------------------------------------------
 ⚠️ IMPORTANTE ⚠️
@@ -42,5 +43,5 @@ Pascutti, Valentina - 89482 - valenpascutti2612@gmail.com
 --------------------------------------------------
 AL EJECUTAR PARA MOSTRAR EL FUNCIONAMIENTO 💻
 --------------------------------------------------
-Aparecen vinos de Sommelier SOLO en la fecha 12-05-2024.
+Aparecen vinos de Sommelier SOLO solo en la fecha 12-05-2024. Se hace esto para la DEMO
 Ejecutar desde el main.py
