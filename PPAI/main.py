@@ -5,10 +5,10 @@ from Clases.Boundary.Interfaz_excel import *
 from Datos.datos import *
 from Clases.Boundary.Interfaz_pdf import *
 
+
 # Llamada a la funcion que carga los datos de 20 vinos de ejemplo
 vinos=carga_datos()
-
-
+"""
 # Para mostrar que coinciden
 for vino in vinos:
     region_vino = vino.get_bodega().get_region()  # Obtener la región de la bodega del vino
@@ -23,6 +23,7 @@ for vino in vinos:
 
     print()
     print()
+"""
 
 
 # funcion que contiene toda la logica
@@ -33,6 +34,10 @@ def main():
     opcion_generar_ranking_vinos=pantalla_ranking_vinos.opcion_generar_ranking_vinos()
     pantalla_ranking_vinos.habilitar_pantalla()
     gestor_ranking_vinos.opcion_generar_ranking_vinos()
+    #vinos=gestor_ranking_vinos._db.consultar_vinos()
+    
+    #print(vinos)
+    
 
     if opcion_generar_ranking_vinos == False:
         fechas=pantalla_ranking_vinos.solicitar_sel_fecha_desde_y_hasta()
@@ -65,8 +70,7 @@ def main():
                                         messagebox.showinfo("Información", "PDF creado con exito.")
                             else:
                                 pantalla_ranking_vinos.mostrar_ranking_por_pantalla(vinos_ordenados)
-
-                                    
+                                               
     gestor_ranking_vinos.fin_cu()
 
     """

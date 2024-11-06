@@ -9,15 +9,15 @@ pip install tkcalendar - Calendario para tomar Fechas
 --------------------------------------------------
 Casos de uso alternativos:
 --------------------------------------------------
--El Enófilo cancela la operación.
--No hay bodegas registradas.
--Visualización del reporte en PDF.
--Visualización del reporte en Pantalla
+- El Enófilo cancela la operación.
+- No hay bodegas registradas.
+- Visualización del reporte en PDF.
+- Visualización del reporte en Pantalla
 
 --------------------------------------------------
 Patrones Aplicados:
 --------------------------------------------------
-
+- Iterator
 
 --------------------------------------------------
 ⚠️ IMPORTANTE ⚠️

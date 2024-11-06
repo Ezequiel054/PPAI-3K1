@@ -1,27 +1,33 @@
-class Vino:
-    def __new__(cls, aniada,fecha_actualizacion,imagen_etiqueta,nombre,nota_de_cata_bodega,precio_ars,bodega,varietal,resenia):
+from Clases.Interface.IAgregado import IAgregado
+from Clases.Iterators.IteradorResenias import IteradorResenias
+from Clases.Entity.Resenia import Resenia
+
+
+class Vino(IAgregado):
+
+    def __new__(cls, aniada, fecha_actualizacion, imagen_etiqueta, nombre, nota_de_cata_bodega, precio_ars, bodega, varietal, resenia):
         instancia = super().__new__(cls)
         instancia.aniada = aniada
         instancia.fecha_actualizacion = fecha_actualizacion
-        instancia.imagen_etiqueta=imagen_etiqueta
-        instancia.nombre=nombre
-        instancia.nota_de_cata_bodega=nota_de_cata_bodega
-        instancia.precio_ars=precio_ars
-        instancia.bodega=bodega
-        instancia.varietal=varietal
-        instancia.resenia=resenia
+        instancia.imagen_etiqueta = imagen_etiqueta
+        instancia.nombre = nombre
+        instancia.nota_de_cata_bodega = nota_de_cata_bodega
+        instancia.precio_ars = precio_ars
+        instancia.bodega = bodega
+        instancia.varietal = varietal
+        instancia.resenia = resenia
         return instancia
     
-    def __init__(self,aniada,fecha_actualizacion,imagen_etiqueta,nombre,nota_de_cata_bodega,precio_ars,bodega,varietal,resenia):
+    def __init__(self, aniada, fecha_actualizacion, imagen_etiqueta, nombre, nota_de_cata_bodega, precio_ars, bodega, varietal, resenia):
         self.aniada = aniada
         self.fecha_actualizacion = fecha_actualizacion
-        self.imagen_etiqueta=imagen_etiqueta
-        self.nombre=nombre
-        self.nota_de_cata_bodega=nota_de_cata_bodega
-        self.precio_ars=precio_ars
-        self.bodega=bodega
-        self.varietal=varietal
-        self.resenia=resenia
+        self.imagen_etiqueta = imagen_etiqueta
+        self.nombre = nombre
+        self.nota_de_cata_bodega = nota_de_cata_bodega
+        self.precio_ars = precio_ars
+        self.bodega = bodega
+        self.varietal = varietal
+        self.resenia = resenia
 
     def get_aniada(self):
         return self.aniada
@@ -80,6 +86,7 @@ class Vino:
     # Esta función obtiene las reseñas de un vino en un período de tiempo específico realizadas por un sommelier en particular.
     # Si no hay reseñas que cumplan con los criterios, retorna False y una lista vacía.
     # Si hay reseñas que cumplan con los criterios, retorna True y la lista de reseñas.
+    """
     def tenes_resenias_de_tipo_en_periodo(self,vino,fecha_desde,fecha_hasta,sommelier):
         resenias = []
         for resenia in vino.get_resenia():
@@ -90,6 +97,25 @@ class Vino:
             return False, []
         else:
             return True, resenias
+    """
+    def tenes_resenias_de_tipo_en_periodo(self, vino, fecha_desde, fecha_hasta, sommelier):
+        resenias = vino.get_resenia()  # Obtener todas las reseñas del vino
+        iterador_resenia = self.crearIterador(resenias)  # Crear el iterador con filtros
+        iterador_resenia.set_filtros({
+            "fecha_desde": fecha_desde,
+            "fecha_hasta": fecha_hasta,
+            "sommelier": sommelier
+        })
+        iterador_resenia.primero()  # Iniciar desde la primera reseña
+        
+        resenias_filtradas = []  # Lista para almacenar las reseñas que cumplen con los filtros
+        
+        while not iterador_resenia.haTerminado():
+            if iterador_resenia.cumpleFiltro():
+                resenias_filtradas.append(iterador_resenia.actual())
+            iterador_resenia.siguiente()
+        
+        return (True, resenias_filtradas) if resenias_filtradas else (False, [])
     
     # Esta función obtiene y retorna el nombre de la bodega asociada a la instancia actual.
     def buscar_info_bodega(self):
@@ -124,6 +150,7 @@ class Vino:
         return promedio_general
 
     # Esta función obtiene y retorna una lista de puntajes de reseñas de un vino en un período de tiempo específico realizadas por un sommelier en particular.
+    """
     def calcular_puntaje_de_sommelier_en_periodo(self,vino,fecha_desde,fecha_hasta,sommelier):
         puntaje_resenias=[]
         for resenia in vino.get_resenia():
@@ -131,3 +158,37 @@ class Vino:
                 if resenia.sos_de_somellier(sommelier):
                     puntaje_resenias.append(resenia.get_puntaje())
         return puntaje_resenias
+    """
+    def calcular_puntaje_de_sommelier_en_periodo(self, vino, fecha_desde, fecha_hasta, sommelier):
+        puntaje_resenias = []
+
+        # Crear el iterador para las reseñas del vino
+        iterador_resenias = IteradorResenias(vino.get_resenia(),filtros=[])
+        
+        # Establecer los filtros en el iterador
+        iterador_resenias.set_filtros({
+            "fecha_desde": fecha_desde,
+            "fecha_hasta": fecha_hasta,
+            "sommelier": sommelier
+        })
+        
+        iterador_resenias.primero()  # Iniciar desde la primera reseña
+
+        while not iterador_resenias.haTerminado():
+            if iterador_resenias.cumpleFiltro():
+                resenia = iterador_resenias.actual()  # Obtener la reseña que cumple con los filtros
+                puntaje_resenias.append(resenia.get_puntaje())  # Agregar el puntaje de la reseña
+            iterador_resenias.siguiente()  # Avanzar a la siguiente reseña
+
+        return puntaje_resenias
+
+
+    def crearIterador(self, elementos):
+        if not elementos:
+            raise ValueError("La lista de elementos no puede estar vacía.")
+
+        # Verificar el tipo de elemento para decidir qué iterador crear
+        if isinstance(elementos[0], Resenia):
+            return IteradorResenias(elementos, filtros=[])  # Retorna un iterador de resenia con filtros vacíos
+        else:
+            raise ValueError("Tipo de elemento no soportado.")

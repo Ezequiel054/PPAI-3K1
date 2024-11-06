@@ -1,0 +1,1 @@
+vinos=gestor_ranking_vinos._db.consultarVinos()
